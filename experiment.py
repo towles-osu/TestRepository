@@ -11,9 +11,9 @@ print("well I don't really care that you feel, " + feelings + ("."))
 #here we will attempt to create a loop that asks the user if they are bored
 #then, if they are not, asks another question
 bored = False
-while(bored == False):
+while not bored:
     isBored = input('Are you bored? Please answer "True" or "False" : ')
-    if(isBored == 'False'):
+    if isBored == 'False':
         print("So what's new?")
         answer = input()
         print("cool beans")
