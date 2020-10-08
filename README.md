@@ -1,2 +1,3 @@
 # TestRepository
-# This is a readme for the test repository to see what happens
+# This repository contains experimental code. 
+# Mostly it is a sandbox, though experiment.py seeks to be an entertaining interactive program
