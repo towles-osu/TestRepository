@@ -2,6 +2,26 @@
 #9/27/2020
 # This program is just a sandbox for playing with python and testing github
 
+def is_yes(word):
+    word = str(word)
+    yes_true = False
+    for counter in word:
+        if counter == "y":
+            yes_true = True
+        if counter == "Y":
+            yes_true = True
+
+def is_no(word):
+    word = str(word)
+    no_true = False
+    for counter in word:
+        if counter == "n":
+            no_true = True
+        if counter == "N":
+            no_true = True
+
+
+
 playThing = input("what do you have? ")
 result = input(playThing + " is what you got. What shall we do with your " + playThing + ("? "))
 print("okay, you got " + playThing + " and we're going to " + result)
@@ -15,8 +35,8 @@ interestCounter = 1
 while not bored:
     if(interestCounter > 3):
         print("Thanks for being so chatty, but I gotta ask one more time.")
-    isBored = input('Are you bored? Please answer "Yes" or "No" : ')
-    if isBored == 'no' or isBored == '"No"' or isBored == 'No' or isBored == '"no"':
+    isBored = input('Are you bored of talking with me? Please answer "Yes" or "No" : ')
+    if is_no(isBored):
         interestCounter += 1
         print("So what's new?")
         answer = input()
@@ -25,7 +45,7 @@ while not bored:
         else:
             print("cool beans")
         bored = False
-    else:
+    elif is_yes(isBored):
         bored = True
         if interestCounter == 1:
             print("thanks for your honesty. I guess we can stop talking now.")
@@ -36,9 +56,12 @@ while not bored:
             print("...")
             print("...")
             lastChance = input("wanna stop talking? A simply y or n will do.")
-            if lastChance == 'y' or lastChance == 'Y' or lastChance == '"Y"' or lastChance == '"y"':
+            if not is_yes(lastchance):
                 print('Great, let\'s chat some more. I gett so sick of saying, "Hello World", I know the world, I been compiling data for you humans since before my programmer was born. Well, not me I guess, depends who you think I am and all.')
-                isBored = False
+                isBored = "No"
                 print('Anyway, back to the matter at hand.')
+    else:
+        print("You didn't answer my question. Let's try this again:")
+        bored = False
 
 print("goodbye swirly cone")
