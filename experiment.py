@@ -4,21 +4,19 @@
 
 def is_yes(word):
     word = str(word)
-    yes_true = False
     for counter in word:
         if counter == "y":
-            yes_true = True
+            return True
         if counter == "Y":
-            yes_true = True
+            return True
 
 def is_no(word):
     word = str(word)
-    no_true = False
     for counter in word:
         if counter == "n":
-            no_true = True
+            return True
         if counter == "N":
-            no_true = True
+            return True
 
 
 
