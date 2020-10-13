@@ -9,6 +9,7 @@ def is_yes(word):
             return True
         if counter == "Y":
             return True
+    return False
 
 def is_no(word):
     word = str(word)
@@ -17,6 +18,7 @@ def is_no(word):
             return True
         if counter == "N":
             return True
+    return False
 
 
 
