@@ -57,7 +57,7 @@ while not bored:
             print("...")
             lastChance = input("wanna stop talking? A simply y or n will do.")
             if not is_yes(lastchance):
-                print('Great, let\'s chat some more. I gett so sick of saying, "Hello World", I know the world, I been compiling data for you humans since before my programmer was born. Well, not me I guess, depends who you think I am and all.')
+                print('Great, let\'s chat some more. I get so sick of saying, "Hello World", I know the world, I been compiling data for you humans since before my programmer was born. Well, not me I guess, depends who you think I am and all.')
                 isBored = "No"
                 print('Anyway, back to the matter at hand.')
     else:
