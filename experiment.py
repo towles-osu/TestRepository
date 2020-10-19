@@ -55,8 +55,8 @@ while not bored:
             print("so")
             print("...")
             print("...")
-            lastChance = input("wanna stop talking? A simply y or n will do.")
-            if not is_yes(lastchance):
+            last_chance = input("wanna stop talking? A simple y or n will do.")
+            if not is_yes(last_chance):
                 print('Great, let\'s chat some more. I get so sick of saying, "Hello World", I know the world, I been compiling data for you humans since before my programmer was born. Well, not me I guess, depends who you think I am and all.')
                 isBored = "No"
                 print('Anyway, back to the matter at hand.')
