@@ -75,7 +75,7 @@ class JobClass:
 
 class MuddCharacter:
     """This is a class that represents an avatar in a D&D style game"""
-    def __init__(self, name, sort = "human", job = "random", level = 1, hp = 1, str = 10, dex = 10, vit = 10, wis = 10, charisma = 10):
+    def __init__(self, name, sort = "human", job = "random", level = 1, hp = 1, str = 10, dex = 10, vit = 10, wis = 10, charisma = 10, facing = 0):
         """initializes a character with name, and all the stuff"""
         self.name = name
         self.lvl = level
@@ -86,6 +86,7 @@ class MuddCharacter:
         self.wis = wis
         self.cha = charisma
         self.sort = sort
+        self.facing = facing
         if job == "random":
             self.job = JobClass(name)
         else:
@@ -105,10 +106,13 @@ class MuddCharacter:
                     self.vit += 1
                 elif (i % 5) == 2:
                     self.dex += 1
+                elif (i % 5) == 3:
+                    self.vit += 1
                 else:
                     self.str += 1
         if self.job._job == 6:
-            self.str += (5 + self.lvl)
+            self.str += (2 + self.lvl)
+            self.vit += 3
         if self.job._job == 1 or self.job._job == 9:
             for i in range(0, self.lvl + 5):
                 if (i % 5) == 0:
@@ -117,6 +121,8 @@ class MuddCharacter:
                     self.str += 1
                 elif (i % 5) == 2:
                     self.wis += 1
+                elif (i % 5) == 3:
+                    self.vit += 1
                 else:
                     self.dex += 1
         if self.job._job == 3 or self.job._job == 12:
@@ -147,6 +153,8 @@ class MuddCharacter:
                     self.vit += 1
                 elif (i % 5) == 2:
                     self.str += 1
+                elif (i % 5) == 3:
+                    self.vit += 1
                 else:
                     self.wis += 1
         if self.job._job == 8:
@@ -192,6 +200,11 @@ class MuddCharacter:
             self.hp = self.vit - 7
         else:
             self.hp = 1
+
+    def turn_char(self, how_to_turn):
+        """This function allows a character to change its orientation"""
+        # 0 is N, 1 is NE, 2 is E up to 7 is NW, then 8 is up, 9 is down
+        self.facing = (self.facing + how_to_turn) % 10
 
 
 def create_character(creation_method):

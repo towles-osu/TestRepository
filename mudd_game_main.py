@@ -19,3 +19,4 @@ else:
     character = MuddCharacter.create_character(0)
 print("Your character", character.name, "is a", character.sort, character.get_job())
 print("Your stats are: Vitality:", character.vit, "Strength:", character.str, 'Dexterity:', character.dex, 'Wisdom:', character.wis, 'Charisma:', character.cha)
+print("You have a maximum hp (and current hp) of " + str(character.hp))
