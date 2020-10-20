@@ -10,11 +10,12 @@ print("In this world you type your commands and then press enter.")
 print("For basic character creation press 1, for advanced press 2, for custom press 3")
 creation_type = int(input("What style of character creation will you use? "))
 if creation_type == 1:
-    character = create_character(0)
+    character = MuddCharacter.create_character(0)
 elif creation_type == 2:
-    character = create_character(1)
+    character = MuddCharacter.create_character(1)
 elif creation_type == 3:
-    character = create_character(2)
+    character = MuddCharacter.create_character(2)
 else:
-    character = create_character(0)
-print("Your character", character.name, "is a", character.sort, character.job)
+    character = MuddCharacter.create_character(0)
+print("Your character", character.name, "is a", character.sort, character.get_job())
+print("Your stats are: Vitality:", character.vit, "Strength:", character.str, 'Dexterity:', character.dex, 'Wisdom:', character.wis, 'Charisma:', character.cha)

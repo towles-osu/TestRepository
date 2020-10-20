@@ -1,5 +1,23 @@
 #Stewart Towle
 #10/19/2020
+# THis file containe the functions and classes for building a character in the mudd
+
+
+def is_stat_letter(letter):
+    """This function determines if the string is a letter that could correspond to a mudd character stat"""
+    if letter == "s" or letter == "S":
+        return True
+    elif letter == "d" or letter == 'd':
+        return True
+    elif letter == "v" or letter == 'V':
+        return True
+    elif letter == 'w' or letter == 'W':
+        return True
+    elif letter == 'c' or letter == 'C':
+        return True
+    else:
+        return False
+
 class JobClass:
     """this is a class that represents the job or class of the character, it stores it as a number but deals with it as a string"""
 
@@ -73,8 +91,149 @@ class MuddCharacter:
         else:
             self.job = JobClass(job)
 
+    def get_job(self):
+        "returns the string name of the job of the character"
+        return self.job.get_job()
+
+    def generate_stats_auto(self):
+        """this function automatically generates the stats of a charcter based on level and job"""
+        if self.job._job == 0 or self.job._job == 2 or self.job._job == 10:
+            for i in range(0, self.lvl + 5):
+                if (i % 5) == 0:
+                    self.str += 1
+                elif (i % 5) == 1:
+                    self.vit += 1
+                elif (i % 5) == 2:
+                    self.dex += 1
+                else:
+                    self.str += 1
+        if self.job._job == 6:
+            self.str += (5 + self.lvl)
+        if self.job._job == 1 or self.job._job == 9:
+            for i in range(0, self.lvl + 5):
+                if (i % 5) == 0:
+                    self.dex += 1
+                elif (i % 5) == 1:
+                    self.str += 1
+                elif (i % 5) == 2:
+                    self.wis += 1
+                else:
+                    self.dex += 1
+        if self.job._job == 3 or self.job._job == 12:
+            for i in range(0, self.lvl + 5):
+                if (i % 5) == 0:
+                    self.cha += 1
+                elif (i % 5) == 1:
+                    self.wis += 1
+                elif (i % 5) == 2:
+                    self.vit += 1
+                else:
+                    self.cha += 1
+        if self.job._job == 4 or self.job._job == 7:
+            for i in range(0, self.lvl + 5):
+                if (i % 5) == 0:
+                    self.wis += 1
+                elif (i % 5) == 1:
+                    self.dex += 1
+                elif (i % 5) == 2:
+                    self.vit += 1
+                else:
+                    self.wis += 1
+        if self.job._job == 11:
+            for i in range(0, self.lvl + 5):
+                if (i % 5) == 0:
+                    self.wis += 1
+                elif (i % 5) == 1:
+                    self.vit += 1
+                elif (i % 5) == 2:
+                    self.str += 1
+                else:
+                    self.wis += 1
+        if self.job._job == 8:
+            for i in range(0, self.lvl + 5):
+                if (i % 5) == 0:
+                    self.dex += 1
+                elif (i % 5) == 1:
+                    self.cha += 1
+                elif (i % 5) == 2:
+                    self.wis += 1
+                else:
+                    self.dex += 1
+        if self.job._job == 5:
+            for i in range(0, self.lvl + 5):
+                if (i % 5) == 0:
+                    self.cha += 1
+                elif (i % 5) == 1:
+                    self.vit += 1
+                elif (i % 5) == 2:
+                    self.vit += 1
+                else:
+                    self.cha += 1
+
+    ## Jobs are as follows, (0, peasant) (1, wanderer) (2, farmer) (3, trader) (4, student) (5, noble)
+    # (6, barbarian) (7, sorcerer) (8, rogue) (9, ranger) (10, knight) (11, druid) (12, bard)
+
+
+    def stat_up(self, letter):
+        if letter == "s" or letter == "S":
+            self.str += 1
+        elif letter == "d" or letter == 'd':
+            self.dex +=1
+        elif letter == "v" or letter == 'V':
+            self.vit += 1
+        elif letter == 'w' or letter == 'W':
+            self.wis += 1
+        elif letter == 'c' or letter == 'C':
+            self.cha += 1
+
+    def full_heal(self):
+        """this function returns the character to max hp, which is 1 + however much greater than 8 the vitality is"""
+        if self.vit > 7:
+            self.hp = self.vit - 7
+        else:
+            self.hp = 1
+
+
 def create_character(creation_method):
-        return MuddCharacter("poopanna")
+    """This is a method for creating a character. It takes as input 0, 1 or 2 to determine creation method"""
+    if creation_method == 0:
+        character = MuddCharacter(input("What is your name: "))
+        character.generate_stats_auto()
+    elif creation_method == 1:
+        name = input("what is your name: ")
+        sort = input("what sort of creature are you: ")
+        print("possible character classes/jobs are limitted to")
+        source_jobs = JobClass('peasant')
+        for num in range(0, len(source_jobs.jobs)):
+            print(source_jobs.jobs[num])
+        job = input("what is your job/character class: ")
+        character = MuddCharacter(name, sort, job)
+        character.generate_stats_auto()
+    elif creation_method == 2:
+        name = input("what is your name: ")
+        sort = input("what sort of creature are you: ")
+        print("possible character classes/jobs are limitted to")
+        source_jobs = JobClass('peasant')
+        for num in range(0, len(source_jobs.jobs)):
+            print(source_jobs.jobs[num])
+        job = input("what is your job/character class: ")
+        lvl = int(input("what is your starting level (please input an integer 1 or greater): "))
+        character = MuddCharacter(name, sort, job, lvl)
+        print("you get", (5 + lvl), "points to put into stats! The possible stats to put points in are strength, vitality, dexterity, wisdom, and charisma")
+        i = 0
+        while i < (lvl + 5):
+            print("which stat would you like to increment up by 1? Please enter s for strength, d for dexterity, v for vitality, w for wisdom or c for charisma: ")
+            letter = str(input())
+            if is_stat_letter(letter):
+                character.stat_up(letter)
+                i += 1
+            else:
+                print("that's not an accepted input try again")
+
+    else:
+        character = MuddCharacter("poopanna")
+    character.full_heal()
+    return character
 
 
 # test_char = MuddCharacter("poopanna")

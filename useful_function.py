@@ -19,3 +19,4 @@ def is_no(word):
         if counter == "N":
             return True
     return False
+
