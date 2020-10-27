@@ -15,17 +15,26 @@
 #         num += 1
 # #
 
-num = 7
-if num == 3 or num:
-    print("true")
+# num = 7
+# if num == 3 or num:
+#     print("true")
+#
+# for testd in range(10, 0, -1):
+#     if(testd == 5):
+#         continue
+#     print(testd)
+#
+#
+# for letter in "robot animal":
+#     if letter == " ":
+#         continue
+#     print(letter)
 
-for testd in range(10, 0, -1):
-    if(testd == 5):
-        continue
-    print(testd)
+class Test:
+    """duh"""
+    def __init__(self,x,y):
+        self.x=x
+        self.y=y
+        return str(x)+", " + str(y)
 
-
-for letter in "robot animal":
-    if letter == " ":
-        continue
-    print(letter)
+print(stew = Test(2,3))
