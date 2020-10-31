@@ -4,12 +4,10 @@
 
 def is_yes(word):
     word = str(word)
-    for counter in word:
-        if counter == "y":
-            return True
-        if counter == "Y":
-            return True
-    return False
+    if 'y' in word.lower():
+        return True
+    else:
+        return False
 
 def is_no(word):
     word = str(word)
