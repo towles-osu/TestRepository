@@ -18,6 +18,17 @@ def is_stat_letter(letter):
     else:
         return False
 
+#NEEDS COMPLETEING
+class Item:
+    """class for items, which have many features"""
+
+
+#NEEDS COMPLETEING
+class Inventory:
+    """This is a class that contains a list of items in your inventory. Items can be active or inactive,
+    which means currently worn/held or not currently worn/held"""
+    #Elements are list of Items, bag_size, total_weight, worn_weight,
+
 class JobClass:
     """this is a class that represents the job or class of the character, it stores it as a number but deals with it as a string"""
 
@@ -75,7 +86,7 @@ class JobClass:
 
 class MuddCharacter:
     """This is a class that represents an avatar in a D&D style game"""
-    def __init__(self, name, sort = "human", job = "random", level = 1, hp = 1, str = 10, dex = 10, vit = 10, wis = 10, charisma = 10, facing = 0):
+    def __init__(self, name, sort = "human", job = "random", level = 1, hp = 1, str = 10, dex = 10, vit = 10, wis = 10, charisma = 10, equipment = Inventory(), facing = 0):
         """initializes a character with name, and all the stuff"""
         self.name = name
         self.lvl = level
@@ -86,6 +97,7 @@ class MuddCharacter:
         self.wis = wis
         self.cha = charisma
         self.sort = sort
+        self.equipment = equipment
         self.facing = facing
         if job == "random":
             self.job = JobClass(name)

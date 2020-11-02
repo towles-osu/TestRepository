@@ -2,10 +2,14 @@
 #october 2020
 #This file contains class and function definitions pertaining to rooms in the mudd
 
+class NPC:
+    """This is a class for creating non-player characters, which can be hostile, neutral, or friendly,
+    have stats like characters, and possibly equipment"""
+
 class RoomFeat:
     """An object for storing the features of a location, such as objects (visible or hidden), creatures,
     routes out of the room (in open spaces this is limitted to the 8 cardinal directions, though there can be portals
-    also contains function such as, look_around(), which returns a list of the visible objects and any clues
+    also contains functions such as, look_around(), which returns a list of the visible objects and any clues
     to finding the hidden objects
     """
 
