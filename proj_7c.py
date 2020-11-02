@@ -28,7 +28,7 @@ def test_saltiness(list_ingr):
 ingredients_2 = [('salt',2), ('flour', 8), ('water', 8)]
 print("original ingredients are:", ingredients_2)
 print("new saltiness is:", test_saltiness(ingredients_2))
-#even if our method had worked correctly, the following print would show that the ingredients
+#even if our method had not crashed because of infinite recursion, the following print would show that the ingredients
 # in the list have not been changed. If our function had instead of creating a variable pointing to
 # an object simply reassigned the value at the index then it would have worked
 print("new ingredient list is:", ingredients_2)
