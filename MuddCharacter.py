@@ -38,7 +38,7 @@ class JobClass:
         """initializes character job. If invalid option entered sets job to one of 5 basic classes:
         wanderer, farmer, trader, student or noble"""
         self.jobs = ['peasant', 'wanderer', 'farmer', 'trader', 'student', 'noble', 'barbarian', 'sorcerer', 'rogue', 'ranger', 'knight', 'druid', 'bard']
-        if _job == "barbarian" or _job == "Barbarian":
+        if "barb" in _job.lower():
             self._job = 6
         elif _job == 'sorcerer' or _job == "Sorcerer":
             self._job = 7
@@ -86,7 +86,7 @@ class JobClass:
 
 class MuddCharacter:
     """This is a class that represents an avatar in a D&D style game"""
-    def __init__(self, name, sort = "human", job = "random", level = 1, hp = 1, str = 10, dex = 10, vit = 10, wis = 10, charisma = 10, equipment = Inventory(), facing = 0):
+    def __init__(self, name, sort = "human", job = "random", level = 1, hp = 1, str = 10, dex = 10, vit = 10, wis = 10, charisma = 10, equipment = None, facing = 0):
         """initializes a character with name, and all the stuff"""
         self.name = name
         self.lvl = level
@@ -97,7 +97,9 @@ class MuddCharacter:
         self.wis = wis
         self.cha = charisma
         self.sort = sort
-        self.equipment = equipment
+        if equipment is None:
+            self.equipment = Inventory()
+        else: self.equipment = equipment
         self.facing = facing
         if job == "random":
             self.job = JobClass(name)
