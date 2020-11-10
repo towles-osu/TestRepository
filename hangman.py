@@ -7,7 +7,8 @@ import random
 cw = open('crosswords.txt', 'r')
 word_list = []
 for word in cw:
-    word_list.append(word.rstrip('\n')) )
+    word_list.append(word.rstrip('\n'))
+    #print(word)
 
     # print(word_list)
     number_of_guesses = 8
@@ -32,7 +33,10 @@ class Hangman:
         """
         Prints current word with dashes for unguessed letters.
         """
-        print(self.get_word().join(' '))
+        print_word = ""
+        for letter in self._display_word:
+            print_word = print_word + letter + " "
+        print("The word is " + print_word)
 
     def check_letter(self, letter):
         """checks if a letter is in the word"""
@@ -50,17 +54,37 @@ class Hangman:
 
     def play_hangman(self, limit_guesses):
         """this function starts a game of hangman"""
+        # Executioner's greeting
+        print("Welcome to the execution of Clippy.exe!")
+        has_guessed_it = False
         while self._fails < limit_guesses:
-            current_letter = self.pick_letter().lower()
+            current_letter = (str(self.pick_letter())).lower()
             if self.check_letter(current_letter):
+                print("yep, that's in the word!")
                 self.update_display_word(current_letter)
                 # maybe more stuff happens when they guess right
             else:
                 self._fails += 1
+                if self._fails < limit_guesses:
+                    print("nope, not in the word. Clippy.exe's life depends on you! You have " \
+                        + str(limit_guesses - self._fails) + " guesses left.")
+                else:
+                    print("nope, not in the word and you're outa guesses.")
+                    break
+            if "_" not in self._display_word:
+                print("You saved Clippy.exe! Good Job!")
+                has_guessed_it = True
+                break
+            self.print_current_word()
+        if has_guessed_it:
+            print("Great Job!")
+        else:
+            self.game_is_lost()
+            print("The word was " + self._word)
 
     # word_to_guess = pick_word()
     # 3) A function that asks the players to guess a letter
-    def pick_letter():
+    def pick_letter(self):
         """
         Allows user to choose a letter.
         """
@@ -68,9 +92,11 @@ class Hangman:
         letter = input()
         return letter
 
+    def game_is_lost(self):
+        print("You have chosen poorly, it's the end of the line for Clippy.exe")
 
-# Executioner's greeting
-print("Welcome to the execution of Clippy.exe!")
+
+
 
 
 # 4) A function that determines what happens when the players guess a letter right
@@ -80,8 +106,7 @@ print("Welcome to the execution of Clippy.exe!")
 
 # 6) A function that determines what happens when "Sticky.exe" is hung
 
-def game_is_lost():
-    print("You have chosen poorly, it's the end of the line for Clippy.exe")
+
 
 
 # 7) A function that determines what happens if "Sticky.exe" gets to run free
@@ -90,8 +115,9 @@ def game_is_lost():
 
 if __name__ == "__main__":
     response = 'Y'
-    while (response != "N"):
-        response = input("Play again? Y/N")
+    while (response.upper() != "N"):
         hangman = Hangman()
+        hangman.play_hangman(10)
+        response = input("Play again? Y/N")
 
     print("Thanks for playing Hangman!")
